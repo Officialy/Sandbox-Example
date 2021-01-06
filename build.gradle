@@ -1,0 +1,61 @@
+plugins {
+    id 'fabric-loom' version '0.5-SNAPSHOT'
+    id "java"
+}
+
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+allprojects {
+    apply plugin: 'java'
+}
+
+archivesBaseName = project.archives_base_name
+
+group 'org.sandboxpowered'
+version '1.0.0'
+
+repositories {
+    maven { url 'https://nexus.sandboxpowered.org/repository/maven-public/' }
+    jcenter()
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.loader_version}"
+    modImplementation "org.sandboxpowered:sandbox-fabric:${rootProject.sandbox_version}"
+    runtimeOnly project(':')
+
+    implementation platform("org.sandboxpowered.api:api:${project.sandbox_version}")
+
+    implementation('org.sandboxpowered.api:base')
+    implementation('org.sandboxpowered.api:rendering')
+    implementation('org.sandboxpowered.api:resources')
+
+    compileOnly 'org.jetbrains:annotations:19.0.0'
+    implementation( 'com.electronwill.night-config:core:3.6.0')
+    implementation('com.electronwill.night-config:toml:3.6.0')
+    implementation('com.github.zafarkhaja:java-semver:0.9.0')
+    implementation('org.sandboxpowered:SimpleEventHandler:2.0.3')
+    implementation 'com.google.guava:guava:21.0'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+}
+
+jar {
+    from "LICENSE"
+}

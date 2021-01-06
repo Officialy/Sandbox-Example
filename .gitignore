@@ -1,0 +1,58 @@
+## Forge stuff
+
+run/
+.gradle/
+gradle/
+build/
+gradle-app.setting
+<<<<<<< HEAD
+gradlew.bat
+gradlew
+gradle.properties
+=======
+>>>>>>> parent of 5d58b80... Remove gradle files from git
+
+## IntelliJ IDEA
+
+.idea/
+*.iml
+*.iws
+*.ipr
+
+## Eclipse
+
+eclipse/
+*.pydevproject
+.project
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
